@@ -21,8 +21,9 @@
 ## Qué falta
 
 Ficha individual (F3, la tarjeta ya enlaza a `/coleccion/:id`), Panel principal, Consultas,
-Ubicación, Importación, Asistente IA, Administración; buscador global (botón sin acción);
-migas de pan (§6, aplican desde F3 con páginas anidadas).
+Ubicación, Importación, Asistente IA, Administración; buscador global (§6, quitado del
+Header hasta que tenga a dónde navegar — ver desviaciones); migas de pan (§6, aplican
+desde F3 con páginas anidadas).
 
 ## Decisiones tomadas
 
@@ -38,7 +39,8 @@ migas de pan (§6, aplican desde F3 con páginas anidadas).
 
 - §15 "tailwind.config": sustituido por `@theme` (Tailwind 4).
 - §19 "ESLint + Prettier en pre-commit y CI": oxlint + Prettier como scripts; sin CI.
-- §6 buscador global: solo el botón con `aria-label`; sin comportamiento.
+- §6 buscador global: botón quitado del `Header` (sin comportamiento no aportaba); vuelve
+  cuando tenga una acción real que navegar.
 - §3 espaciado: escala nativa de Tailwind (4px) equivalente a `--space-*`.
 - F2 §11 `srcset` en 2 resoluciones: no aplica a SVG vectorial; queda para imágenes reales.
 - F2 §10 "cargando: trama del retablo animada": ícono retablo en `--gris-1` + texto con

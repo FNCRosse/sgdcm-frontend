@@ -1,4 +1,4 @@
-import { CircleUser, LogOut, Menu, Search, X } from 'lucide-react'
+import { CircleUser, LogOut, Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSesion } from '@/hooks/useSesion'
@@ -18,7 +18,7 @@ export function Header({ usuario }: { usuario: Usuario }) {
   return (
     <header className="sticky top-0 z-10 border-b border-linea bg-blanco">
       <div className="mx-auto flex max-w-contenido items-center gap-4 px-4 py-2 md:px-8 lg:px-10">
-        {/* Escritorio (§6): lockup positivo → nav → buscador → cuenta */}
+        {/* Escritorio (§6): lockup positivo → nav → cuenta */}
         <img
           src="/brand/matp_lockup_positivo.svg"
           alt="Museo de Artes y Tradiciones Populares Luis Repetto Málaga"
@@ -28,13 +28,6 @@ export function Header({ usuario }: { usuario: Usuario }) {
           <NavEnlaces rol={usuario.rol} variante="escritorio" />
         </nav>
         <div className="hidden shrink-0 items-center gap-3 md:flex">
-          <button
-            type="button"
-            aria-label="Buscar en todo el sistema"
-            className="grid size-11 place-items-center rounded-btn text-azul hover:bg-fondo-suave"
-          >
-            <Search size={24} aria-hidden />
-          </button>
           <div className="flex items-center gap-2 text-azul">
             <CircleUser size={24} aria-hidden />
             <div className="leading-tight">
