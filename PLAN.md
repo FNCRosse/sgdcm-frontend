@@ -19,9 +19,9 @@ Leyenda: ⬜ pendiente · 🔄 en curso · ✅ hecha
 - **Criterios de aceptación:** repo en GitHub con push hecho; SVGs de marca sin modificar;
   ninguna vista pública creada; `npm install` funciona; carpetas de §16 existen.
 - **Qué NO hacer:** código de pantallas, tailwind.config, AuthProvider, rutas.
-- **Bloqueo real:** el grafo del prototipo (`graphify-out/graph.json`) no se pudo construir
-  — falta un backend LLM autenticado (ver `graphify-corpus/06-estado-fases.md` §Bloqueos).
-  Las cápsulas están escritas; falta correr `graphify graphify-corpus` con éxito.
+- **Grafo del prototipo:** construido y verificado (`graphify-out/graph.json`, 21 nodos) vía
+  `graphify graphify-corpus --backend claude-cli`, tras que el usuario reautenticó la CLI
+  con `claude login`.
 
 ---
 

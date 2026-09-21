@@ -14,8 +14,9 @@ F0-F10.
 - Estructura de carpetas de §16 creada (vacía, `.gitkeep`).
 - Assets de marca copiados sin modificar a `public/brand/` (Logo_MATP/* + icono pucp.svg).
 - `FRONTEND_DESIGN_SPEC.md` y `docs/historias-usuario.md` copiados al repo (autocontenido).
-- **Grafo del prototipo: BLOQUEADO.** Ver "Bloqueos" abajo. Las 7 cápsulas están escritas
-  y commiteadas; falta correr `graphify graphify-corpus` con éxito.
+- Grafo del prototipo construido con `graphify graphify-corpus --backend claude-cli`
+  (21 nodos, 34 edges), commiteado en `graphify-out/graph.json` (raíz del repo, hermano de
+  `graphify-corpus/`). Verificado con queries de prueba — responde bien.
 
 ## Qué falta (todo lo demás)
 
@@ -30,15 +31,12 @@ Tokens→Tailwind, layout/shell, router, auth mock, y las 7 páginas. Ver `PLAN.
 
 ## Bloqueos
 
-- **`graphify graphify-corpus` no puede construir el grafo todavía**: la extracción
-  semántica de los 7 `.md` (son texto, no código) necesita un backend LLM. Sin
-  `GEMINI_API_KEY`/`GOOGLE_API_KEY`/`ANTHROPIC_API_KEY`/etc. en el entorno, y el backend
-  `claude-cli` falla con `OAuth session expired and could not be refreshed` (la sesión de
-  `claude` CLI local, separada de esta sesión de Claude Code, no está autenticada).
-  **Acción pendiente del usuario**: exportar una API key soportada (Gemini tiene tier
-  gratis) o correr `claude login` para refrescar la CLI, y luego `graphify
-  graphify-corpus` desde la raíz del repo. Hasta entonces, este grafo no responde queries
-  — usar `FRONTEND_DESIGN_SPEC.md`/`docs/historias-usuario.md` y esta cápsula directamente.
+Ninguno. El bloqueo original (`claude-cli` sin sesión OAuth activa, sin API key de LLM en
+el entorno) se resolvió: el usuario corrió `claude login` y se reconstruyó el grafo con
+`graphify graphify-corpus --backend claude-cli`. **Nota de proceso:** ese comando escribe
+`graphify-out/` dentro del argumento pasado (`graphify-corpus/graphify-out/`), no en la
+raíz del repo — hay que moverlo a la raíz (`mv graphify-corpus/graphify-out .`) después de
+cada build/rebuild para mantener la convención (grafo hermano del corpus).
 
 ## Deudas técnicas abiertas
 

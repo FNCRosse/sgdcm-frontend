@@ -1,0 +1,475 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {
+    "hyperedges": [
+      {
+        "id": "lint_tooling_deviation",
+        "label": "Desviaci\u00f3n de lint (oxlint vs ESLint) documentada como deuda t\u00e9cnica abierta",
+        "nodes": [
+          "04_arquitectura_codigo",
+          "06_estado_fases",
+          "lint_deviation"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 0.8,
+        "source_file": "06-estado-fases.md"
+      },
+      {
+        "id": "rbac_auth_design",
+        "label": "Dise\u00f1o RBAC/Auth para F1 (roles, guard, contrato AuthProvider, mapeo p\u00e1gina\u2192rol)",
+        "nodes": [
+          "02_rbac_y_rutas",
+          "authprovider",
+          "rbac_roles",
+          "03_paginas_y_hu"
+        ],
+        "relation": "form",
+        "confidence": "EXTRACTED",
+        "confidence_score": 0.85,
+        "source_file": "02-rbac-y-rutas.md"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": "design_tokens_concept",
+      "label": "Design tokens \u00a73 (color, tipograf\u00eda, radios, espaciado)",
+      "author": null,
+      "captured_at": null,
+      "community": 0,
+      "contributor": null,
+      "file_type": "concept",
+      "norm_label": "design tokens \u00a73 (color, tipografia, radios, espaciado)",
+      "rationale": null,
+      "source_file": "01-design-tokens.md",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "msw_mock_api",
+      "label": "API mock /api/... (MSW)",
+      "author": null,
+      "captured_at": null,
+      "community": 0,
+      "contributor": null,
+      "file_type": "concept",
+      "norm_label": "api mock /api/... (msw)",
+      "rationale": null,
+      "source_file": "05-api-mock-msw.md",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "00_prototipo_contexto",
+      "label": "Contexto del prototipo",
+      "author": null,
+      "captured_at": null,
+      "community": 0,
+      "contributor": null,
+      "file_type": "document",
+      "norm_label": "contexto del prototipo",
+      "rationale": null,
+      "source_file": "00-prototipo-contexto.md",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "01_design_tokens",
+      "label": "Design tokens e iconograf\u00eda",
+      "author": null,
+      "captured_at": null,
+      "community": 0,
+      "contributor": null,
+      "file_type": "document",
+      "norm_label": "design tokens e iconografia",
+      "rationale": null,
+      "source_file": "01-design-tokens.md",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "05_api_mock_msw",
+      "label": "API mock con MSW",
+      "author": null,
+      "captured_at": null,
+      "community": 0,
+      "contributor": null,
+      "file_type": "document",
+      "norm_label": "api mock con msw",
+      "rationale": "MSW debe imitar la FORMA de la futura API FastAPI/Supabase (rutas, c\u00f3digos de estado, shape de respuesta, errores, latencia) para que migrar de mock a real sea un cambio de capa lib/, no de componentes.",
+      "source_file": "05-api-mock-msw.md",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "estructura_carpetas",
+      "label": "Estructura de carpetas src/ (\u00a716)",
+      "author": null,
+      "captured_at": null,
+      "community": 1,
+      "contributor": null,
+      "file_type": "concept",
+      "norm_label": "estructura de carpetas src/ (\u00a716)",
+      "rationale": null,
+      "source_file": "04-arquitectura-codigo.md",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "lint_deviation",
+      "label": "Desviaci\u00f3n de lint: oxlint vs ESLint",
+      "author": null,
+      "captured_at": null,
+      "community": 1,
+      "contributor": null,
+      "file_type": "concept",
+      "norm_label": "desviacion de lint: oxlint vs eslint",
+      "rationale": "El scaffold de Vite trae oxlint por defecto como linter (.oxlintrc.json, script lint); el spec \u00a719 pide ESLint con eslint-plugin-react/react-hooks/jsx-a11y + Prettier. Las dependencias ya est\u00e1n instaladas pero falta decidir en F1 si se reemplaza el script lint por ESLint o se justifica expl\u00edcitamente mantener oxlint.",
+      "source_file": "04-arquitectura-codigo.md",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "04_arquitectura_codigo",
+      "label": "Arquitectura de c\u00f3digo",
+      "author": null,
+      "captured_at": null,
+      "community": 1,
+      "contributor": null,
+      "file_type": "document",
+      "norm_label": "arquitectura de codigo",
+      "rationale": null,
+      "source_file": "04-arquitectura-codigo.md",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "06_estado_fases",
+      "label": "Estado de fases",
+      "author": null,
+      "captured_at": null,
+      "community": 1,
+      "contributor": null,
+      "file_type": "document",
+      "norm_label": "estado de fases",
+      "rationale": "Repo nuevo creado hermano de la carpeta de dise\u00f1o (no anidado) y FRONTEND_DESIGN_SPEC.md/historias-usuario.md se mantienen fuera de graphify-corpus/ para no colisionar en numeraci\u00f3n ni mezclarse con el grafo del c\u00f3digo.",
+      "source_file": "06-estado-fases.md",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "graphify_graph",
+      "label": "graphify-out/graph.json (grafo del prototipo)",
+      "author": null,
+      "captured_at": null,
+      "community": 1,
+      "contributor": null,
+      "file_type": "document",
+      "norm_label": "graphify-out/graph.json (grafo del prototipo)",
+      "rationale": "El comando `graphify graphify-corpus --backend claude-cli` escribe graphify-out/ dentro del argumento pasado (graphify-corpus/graphify-out/) en vez de la ra\u00edz del repo; hay que moverlo manualmente (mv graphify-corpus/graphify-out .) tras cada build/rebuild para mantener la convenci\u00f3n de grafo hermano del corpus.",
+      "source_file": "06-estado-fases.md",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "authprovider",
+      "label": "AuthProvider (contrato mock)",
+      "author": null,
+      "captured_at": null,
+      "community": 2,
+      "contributor": null,
+      "file_type": "concept",
+      "norm_label": "authprovider (contrato mock)",
+      "rationale": "Capa aislada en un \u00fanico archivo mock intercambiable (login, logout, getSession, getRole) para que migrar a Supabase Auth despu\u00e9s toque solo ese archivo, ninguna pantalla.",
+      "source_file": "02-rbac-y-rutas.md",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "rbac_roles",
+      "label": "RBAC \u2014 5 roles",
+      "author": null,
+      "captured_at": null,
+      "community": 2,
+      "contributor": null,
+      "file_type": "concept",
+      "norm_label": "rbac \u2014 5 roles",
+      "rationale": null,
+      "source_file": "02-rbac-y-rutas.md",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "02_rbac_y_rutas",
+      "label": "RBAC y rutas",
+      "author": null,
+      "captured_at": null,
+      "community": 2,
+      "contributor": null,
+      "file_type": "document",
+      "norm_label": "rbac y rutas",
+      "rationale": null,
+      "source_file": "02-rbac-y-rutas.md",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "03_paginas_y_hu",
+      "label": "Las 7 p\u00e1ginas y sus HU",
+      "author": null,
+      "captured_at": null,
+      "community": 2,
+      "contributor": null,
+      "file_type": "document",
+      "norm_label": "las 7 paginas y sus hu",
+      "rationale": "Colecci\u00f3n y Consultas y reportes comparten filtros pero se mantienen como componentes separados: Colecci\u00f3n es la pantalla de trabajo/CRUD (filtros b\u00e1sicos de apoyo a edici\u00f3n); Consultas y reportes es b\u00fasqueda avanzada de solo lectura sobre todo el cat\u00e1logo (AND/OR, conteo en vivo, exportaci\u00f3n). Comparten hooks/servicios de datos pero difieren en UI.",
+      "source_file": "03-paginas-y-hu.md",
+      "source_location": null,
+      "source_url": null
+    }
+  ],
+  "links": [
+    {
+      "source": "00_prototipo_contexto",
+      "target": "authprovider",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.9,
+      "source_file": "00-prototipo-contexto.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "00_prototipo_contexto",
+      "target": "03_paginas_y_hu",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "00-prototipo-contexto.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "00_prototipo_contexto",
+      "target": "05_api_mock_msw",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "00-prototipo-contexto.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "00_prototipo_contexto",
+      "target": "06_estado_fases",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "00-prototipo-contexto.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "01_design_tokens",
+      "target": "00_prototipo_contexto",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "01-design-tokens.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "01_design_tokens",
+      "target": "06_estado_fases",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "01-design-tokens.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "01_design_tokens",
+      "target": "design_tokens_concept",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "01-design-tokens.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "02_rbac_y_rutas",
+      "target": "03_paginas_y_hu",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "02-rbac-y-rutas.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "02_rbac_y_rutas",
+      "target": "06_estado_fases",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "02-rbac-y-rutas.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "02_rbac_y_rutas",
+      "target": "authprovider",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "02-rbac-y-rutas.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "02_rbac_y_rutas",
+      "target": "rbac_roles",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "02-rbac-y-rutas.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "03_paginas_y_hu",
+      "target": "06_estado_fases",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "03-paginas-y-hu.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "04_arquitectura_codigo",
+      "target": "06_estado_fases",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "04-arquitectura-codigo.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "04_arquitectura_codigo",
+      "target": "estructura_carpetas",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "04-arquitectura-codigo.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "04_arquitectura_codigo",
+      "target": "lint_deviation",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "04-arquitectura-codigo.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "05_api_mock_msw",
+      "target": "06_estado_fases",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "05-api-mock-msw.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "05_api_mock_msw",
+      "target": "msw_mock_api",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "05-api-mock-msw.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "06_estado_fases",
+      "target": "graphify_graph",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "06-estado-fases.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "06_estado_fases",
+      "target": "lint_deviation",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "06-estado-fases.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "03_paginas_y_hu",
+      "target": "rbac_roles",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "03-paginas-y-hu.md",
+      "source_location": null,
+      "weight": 0.65
+    },
+    {
+      "source": "authprovider",
+      "target": "rbac_roles",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "02-rbac-y-rutas.md",
+      "source_location": null,
+      "weight": 0.7
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "lint_tooling_deviation",
+      "label": "Desviaci\u00f3n de lint (oxlint vs ESLint) documentada como deuda t\u00e9cnica abierta",
+      "nodes": [
+        "04_arquitectura_codigo",
+        "06_estado_fases",
+        "lint_deviation"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.8,
+      "source_file": "06-estado-fases.md"
+    },
+    {
+      "id": "rbac_auth_design",
+      "label": "Dise\u00f1o RBAC/Auth para F1 (roles, guard, contrato AuthProvider, mapeo p\u00e1gina\u2192rol)",
+      "nodes": [
+        "02_rbac_y_rutas",
+        "authprovider",
+        "rbac_roles",
+        "03_paginas_y_hu"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.85,
+      "source_file": "02-rbac-y-rutas.md"
+    }
+  ],
+  "built_at_commit": "f4a8afeb15b72272e60526baa655fc2182ae8b77"
+}

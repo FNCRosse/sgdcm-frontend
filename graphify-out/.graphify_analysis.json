@@ -1,0 +1,142 @@
+{
+  "communities": {
+    "0": [
+      "00_prototipo_contexto",
+      "01_design_tokens",
+      "05_api_mock_msw",
+      "design_tokens_concept",
+      "msw_mock_api"
+    ],
+    "1": [
+      "04_arquitectura_codigo",
+      "06_estado_fases",
+      "estructura_carpetas",
+      "graphify_graph",
+      "lint_deviation"
+    ],
+    "2": [
+      "02_rbac_y_rutas",
+      "03_paginas_y_hu",
+      "authprovider",
+      "rbac_roles"
+    ]
+  },
+  "cohesion": {
+    "0": 0.4,
+    "1": 0.5,
+    "2": 0.8333333333333334
+  },
+  "gods": [
+    {
+      "id": "06_estado_fases",
+      "label": "Estado de fases",
+      "degree": 8
+    },
+    {
+      "id": "00_prototipo_contexto",
+      "label": "Contexto del prototipo",
+      "degree": 5
+    },
+    {
+      "id": "02_rbac_y_rutas",
+      "label": "RBAC y rutas",
+      "degree": 4
+    },
+    {
+      "id": "03_paginas_y_hu",
+      "label": "Las 7 p\u00e1ginas y sus HU",
+      "degree": 4
+    },
+    {
+      "id": "01_design_tokens",
+      "label": "Design tokens e iconograf\u00eda",
+      "degree": 3
+    },
+    {
+      "id": "04_arquitectura_codigo",
+      "label": "Arquitectura de c\u00f3digo",
+      "degree": 3
+    },
+    {
+      "id": "05_api_mock_msw",
+      "label": "API mock con MSW",
+      "degree": 3
+    },
+    {
+      "id": "authprovider",
+      "label": "AuthProvider (contrato mock)",
+      "degree": 3
+    },
+    {
+      "id": "rbac_roles",
+      "label": "RBAC \u2014 5 roles",
+      "degree": 3
+    },
+    {
+      "id": "lint_deviation",
+      "label": "Desviaci\u00f3n de lint: oxlint vs ESLint",
+      "degree": 2
+    }
+  ],
+  "surprises": [
+    {
+      "source": "Contexto del prototipo",
+      "target": "Las 7 p\u00e1ginas y sus HU",
+      "source_files": [
+        "00-prototipo-contexto.md",
+        "03-paginas-y-hu.md"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "Contexto del prototipo",
+      "target": "Estado de fases",
+      "source_files": [
+        "00-prototipo-contexto.md",
+        "06-estado-fases.md"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "Contexto del prototipo",
+      "target": "AuthProvider (contrato mock)",
+      "source_files": [
+        "00-prototipo-contexto.md",
+        "02-rbac-y-rutas.md"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "Design tokens e iconograf\u00eda",
+      "target": "Estado de fases",
+      "source_files": [
+        "01-design-tokens.md",
+        "06-estado-fases.md"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "RBAC y rutas",
+      "target": "Estado de fases",
+      "source_files": [
+        "02-rbac-y-rutas.md",
+        "06-estado-fases.md"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "connects across different repos/directories; bridges separate communities"
+    }
+  ],
+  "tokens": {
+    "input": 66562,
+    "output": 12014
+  }
+}
