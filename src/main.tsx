@@ -7,8 +7,15 @@ import { App } from './app/App'
 async function habilitarMocks() {
   if (!import.meta.env.DEV) return
   const { worker } = await import('./mocks/browser')
-  // Si el navegador no permite Service Workers, la app arranca igual (sin datos).
-  await worker.start({ onUnhandledRequest: 'bypass' }).catch((e) => console.warn('[MSW]', e))
+  try {
+    await worker.start({ onUnhandledRequest: 'bypass' })
+  } catch (e) {
+    // El navegador rechazó el Service Worker (política/sandbox/extensión): mismos
+    // mocks, interceptando `fetch` a mano en vez de vía SW. Ver mocks/fetchFallback.ts.
+    console.warn('[MSW] Service Worker no disponible, uso fetch directo.', e)
+    const { activarRespaldoFetch } = await import('./mocks/fetchFallback')
+    activarRespaldoFetch()
+  }
 }
 
 habilitarMocks().then(() =>
