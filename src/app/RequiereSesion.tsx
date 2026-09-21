@@ -7,7 +7,9 @@ export function RequiereSesion() {
   const { usuario } = useSesion()
   const { pathname } = useLocation()
   if (!usuario) return <Navigate to="/login" replace state={{ desde: pathname }} />
-  const seccion = SECCIONES.find((s) => s.ruta === pathname)
+  const seccion = SECCIONES.find(
+    (s) => s.ruta === pathname || (s.ruta !== '/' && pathname.startsWith(`${s.ruta}/`)),
+  )
   if (seccion && !seccion.roles.includes(usuario.rol)) return <Navigate to="/" replace />
   return <Outlet />
 }

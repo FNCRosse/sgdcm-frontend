@@ -11,8 +11,9 @@ registrado en `package.json > msw.workerDirectory`). Tests: `setupServer(...hand
 ## Cliente HTTP — `src/lib/api.ts`
 
 `apiGet<T>(path, params?)`: arma la URL (omite params vacíos/undefined), lanza `ApiError`
-(`status`, `message` = `detail` del body, forma FastAPI) si `!res.ok`. `VITE_API_URL` como
-prefijo opcional: migrar a FastAPI real es cambiar ese archivo, no las pantallas.
+(`status`, `message` = `detail` del body, forma FastAPI) si `!res.ok`. `apiPatch<T>(path, body)`
+(F3): PATCH con JSON, mismo manejo de `ApiError`. `VITE_API_URL` como prefijo opcional: migrar
+a FastAPI real es cambiar ese archivo, no las pantallas.
 
 ## Contrato futuro (FastAPI + Supabase real)
 
@@ -25,7 +26,8 @@ MSW imita la FORMA de la API (rutas `/api/...`, códigos, shape JSON, latencia 4
 |---|---|---|---|---|
 | `/api/piezas` | GET | F2 | HU-01..05 (listado) | Query: `pagina` (1..), `porPagina` (≤48, def. 12), `q` (código o nombre, substring), filtros exactos `coleccion`, `procedencia`, `autor`, `material`, `epoca`, `estadoConservacion`, `estadoFicha`. Respuesta `PaginaPiezas { datos, total, pagina, porPagina }` |
 | `/api/piezas/filtros` | GET | F2 | HU-01..05 | `OpcionesFiltros`: opciones por filtro (vocabularios del mock) |
-| `/api/piezas/:id` | GET | F2 (para F3) | HU-01..05 (ficha) | `Pieza` o 404 `{ detail }` |
+| `/api/piezas/:id` | GET | F2/F3 | HU-01..05 (ficha) | `Pieza` o 404 `{ detail }` |
+| `/api/piezas/:id/estado` | PATCH | F3 | HU-05 | Body `{ estado, justificacion? }`. Transiciones válidas: Borrador→En revisión, En revisión→Aprobada/Rechazada, Rechazada→En revisión (tabla `TRANSICIONES` en `handlers.ts`). 400 si la transición no está permitida o si `estado: 'Rechazada'` sin `justificacion` no vacía. 404 si no existe la pieza. Devuelve la `Pieza` actualizada (muta el array `PIEZAS` en memoria — se resetea al recargar). |
 
 ## Datos del mock (`datos.ts`)
 

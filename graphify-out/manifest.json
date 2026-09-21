@@ -21,24 +21,24 @@
     "mtime": 1789956077.2378728,
     "seen": 1789959021.5047646,
     "ast_hash": "ae6e78b2673d200d4332afd30e01090a",
-    "semantic_hash": "ae6e78b2673d200d4332afd30e01090a"
+    "semantic_hash": ""
   },
   "04-arquitectura-codigo.md": {
     "mtime": 1789958191.0512848,
     "seen": 1789959021.504768,
     "ast_hash": "eaa6c4e3ae4ac15f0f443d6458f7aeb2",
-    "semantic_hash": "eaa6c4e3ae4ac15f0f443d6458f7aeb2"
+    "semantic_hash": ""
   },
   "05-api-mock-msw.md": {
     "mtime": 1789956099.8763647,
     "seen": 1789959021.504771,
     "ast_hash": "21a1232c6f8b51fe57cee0e5e44d56cf",
-    "semantic_hash": "21a1232c6f8b51fe57cee0e5e44d56cf"
+    "semantic_hash": ""
   },
   "06-estado-fases.md": {
     "mtime": 1789958221.9215026,
     "seen": 1789959021.5047743,
     "ast_hash": "5ccd30966b8b087c54b37ed203c6faf4",
-    "semantic_hash": "5ccd30966b8b087c54b37ed203c6faf4"
+    "semantic_hash": ""
   }
 }

@@ -1,6 +1,6 @@
-import { keepPreviousData, useQuery } from '@tanstack/react-query'
-import { apiGet } from '@/lib/api'
-import type { FiltrosPieza, OpcionesFiltros, PaginaPiezas } from '@/types/pieza'
+import { keepPreviousData, useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { apiGet, apiPatch } from '@/lib/api'
+import type { EstadoFicha, FiltrosPieza, OpcionesFiltros, PaginaPiezas, Pieza } from '@/types/pieza'
 
 export const POR_PAGINA = 12
 
@@ -19,5 +19,25 @@ export function useOpcionesFiltros() {
     queryKey: ['piezas', 'filtros'],
     queryFn: () => apiGet<OpcionesFiltros>('/api/piezas/filtros'),
     staleTime: Infinity,
+  })
+}
+
+/** Ficha individual (F3). */
+export function usePieza(id: string) {
+  return useQuery({
+    queryKey: ['piezas', id],
+    queryFn: () => apiGet<Pieza>(`/api/piezas/${id}`),
+  })
+}
+
+/** Flujo de aprobación HU-05: Borrador→En revisión→Aprobada/Rechazada. */
+export function useCambiarEstadoFicha(id: string) {
+  const queryClient = useQueryClient()
+  return useMutation({
+    mutationFn: (payload: { estado: EstadoFicha; justificacion?: string }) =>
+      apiPatch<Pieza>(`/api/piezas/${id}/estado`, payload),
+    onSuccess: (pieza) => {
+      queryClient.setQueryData(['piezas', id], pieza)
+    },
   })
 }

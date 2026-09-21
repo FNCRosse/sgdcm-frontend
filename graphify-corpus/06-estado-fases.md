@@ -1,7 +1,7 @@
 # Estado de fases
 
-**Fase actual: F2 ✅ (cerrada el 2026-09-20).** Próxima: F3 (ficha individual de pieza en
-`/coleccion/:id`: galería + datos técnicos + flujo de aprobación). Ver `PLAN.md` en la raíz.
+**Fase actual: F3 ✅ (cerrada el 2026-09-20).** Próxima: F4 (Panel principal: KPIs, gráfico de
+distribución por colección, alertas de datos incompletos). Ver `PLAN.md` en la raíz.
 
 ## Qué está hecho
 
@@ -17,13 +17,18 @@
   5 tests (`src/pages/coleccion/ColeccionPage.test.tsx`, MSW en node). Total 14 tests.
   Verificado visualmente a 375px y escritorio (parche in-page de `fetch` porque el panel
   del navegador integrado bloquea Service Workers — en Chrome normal el worker funciona).
+- **F3**: `pages/coleccion/FichaPage.tsx` en `/coleccion/:id` (guard `RequiereSesion` ahora
+  matchea rutas hijas por prefijo, no solo exacto); hook `usePieza` + mutación
+  `useCambiarEstadoFicha` en `features/fichas/usePiezas.ts`; `apiPatch` en `lib/api.ts`;
+  endpoint `PATCH /api/piezas/:id/estado` en `handlers.ts` (flujo Borrador→En revisión→
+  Aprobada/Rechazada, rechazo exige justificación); botones de aprobación deshabilitados por
+  rol (§5); migas de pan (`>` escritorio / botón "volver" móvil); modal de imagen con
+  `<dialog>` nativo. 7 tests nuevos (`FichaPage.test.tsx`). Total 21 tests.
 
 ## Qué falta
 
-Ficha individual (F3, la tarjeta ya enlaza a `/coleccion/:id`), Panel principal, Consultas,
-Ubicación, Importación, Asistente IA, Administración; buscador global (§6, quitado del
-Header hasta que tenga a dónde navegar — ver desviaciones); migas de pan (§6, aplican
-desde F3 con páginas anidadas).
+Panel principal (F4), Consultas, Ubicación, Importación, Asistente IA, Administración;
+buscador global (§6, quitado del Header hasta que tenga a dónde navegar — ver desviaciones).
 
 ## Decisiones tomadas
 
@@ -34,6 +39,10 @@ desde F3 con páginas anidadas).
   combobox propio). Imágenes mock como `data:` SVG (cero archivos). MSW arranca con
   `.catch` → la app nunca se queda en blanco si el SW falla. Tests con `msw/node` por
   archivo, no global. `POR_PAGINA = 12` (múltiplo de 3 y 4 → retícula llena).
+- F3: galería de una sola imagen (el modelo `Pieza` no tiene array de fotos) → sin
+  swipe/puntos, solo botón que abre un `<dialog>` con la imagen ampliada; se añade
+  swipe/puntos si el modelo pasa a multi-imagen. Mutación de estado optimista simple
+  (`onSuccess` reescribe la query) sin rollback porque MSW no falla aleatoriamente.
 
 ## Desviaciones respecto al spec (acumuladas)
 
@@ -49,6 +58,9 @@ desde F3 con páginas anidadas).
   alternativa por botón que §11 exige); sin trampa de foco (deuda, ver abajo).
 - F2 §11 "Filtros de Colección" en escritorio: fila sobre `--fondo-suave`, no panel lateral
   (el spec no fija posición).
+- F3 §8/§9 "galería": el modelo `Pieza` solo trae una imagen de portada, así que la
+  "galería" es esa imagen + modal de ampliación; no hay swipe/puntos por falta de datos
+  multi-imagen que animarlos.
 
 ## Bloqueos
 

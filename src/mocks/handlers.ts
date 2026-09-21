@@ -1,6 +1,14 @@
 import { delay, http, HttpResponse } from 'msw'
-import type { FiltrosPieza, PaginaPiezas, Pieza } from '@/types/pieza'
+import type { EstadoFicha, FiltrosPieza, PaginaPiezas, Pieza } from '@/types/pieza'
 import { OPCIONES, PIEZAS } from './datos'
+
+/** Transiciones válidas del flujo de aprobación HU-05. */
+const TRANSICIONES: Record<EstadoFicha, EstadoFicha[]> = {
+  Borrador: ['En revisión'],
+  'En revisión': ['Aprobada', 'Rechazada'],
+  Aprobada: [],
+  Rechazada: ['En revisión'],
+}
 
 /** Latencia simulada de la futura FastAPI; cero en tests. */
 const latencia = () => delay(import.meta.env.MODE === 'test' ? 0 : 400)
@@ -49,5 +57,26 @@ export const handlers = [
     return pieza
       ? HttpResponse.json(pieza)
       : HttpResponse.json({ detail: 'Pieza no encontrada' }, { status: 404 })
+  }),
+
+  http.patch('/api/piezas/:id/estado', async ({ params, request }) => {
+    await latencia()
+    const pieza = PIEZAS.find((pz) => pz.id === params.id)
+    if (!pieza) return HttpResponse.json({ detail: 'Pieza no encontrada' }, { status: 404 })
+
+    const body = (await request.json()) as { estado?: EstadoFicha; justificacion?: string }
+    const destino = body.estado
+    if (!destino || !TRANSICIONES[pieza.estadoFicha].includes(destino)) {
+      return HttpResponse.json({ detail: 'Transición no permitida' }, { status: 400 })
+    }
+    if (destino === 'Rechazada' && !body.justificacion?.trim()) {
+      return HttpResponse.json(
+        { detail: 'El rechazo requiere una justificación' },
+        { status: 400 },
+      )
+    }
+
+    pieza.estadoFicha = destino
+    return HttpResponse.json(pieza)
   }),
 ]

@@ -60,13 +60,20 @@ mocks MSW de `/api/piezas` (~50 registros, imágenes placeholder SVG). Actualiza
   `ColeccionPage` con filtros y página en la URL; 5 tests nuevos (14 en total); desviaciones
   en `graphify-corpus/06-estado-fases.md`.
 
-## F3 — Ficha individual de pieza 🔄
+## F3 — Ficha individual de pieza ✅
 
 Galería + datos técnicos + flujo de aprobación (Borrador→En revisión→Aprobada/Rechazada).
 HU-01 a HU-05 (completa). Comparte `features/fichas/` con F2. Actualizar
 `03-paginas-y-hu.md`, `05-api-mock-msw.md`, `06-estado-fases.md`.
 
-## F4 — Panel principal ⬜
+- **Cierre (2026-09-20):** ruta `/coleccion/:id` → `FichaPage.tsx` (imagen + modal `<dialog>`,
+  datos técnicos, migas de pan, flujo de aprobación por rol); `usePieza`/`useCambiarEstadoFicha`
+  en `features/fichas/usePiezas.ts`; `apiPatch` en `lib/api.ts`; `PATCH /api/piezas/:id/estado`
+  en MSW con transiciones y justificación obligatoria de rechazo; guard `RequiereSesion` ahora
+  matchea rutas hijas por prefijo; 7 tests nuevos (21 en total); desviaciones (galería de una
+  sola imagen) en `graphify-corpus/06-estado-fases.md`.
+
+## F4 — Panel principal 🔄
 
 KPIs, gráfico de distribución por colección, alertas de datos incompletos. HU-17, HU-09.
 `src/pages/panel-principal/`. Actualizar `03-paginas-y-hu.md`, `05-api-mock-msw.md`,
@@ -120,16 +127,14 @@ PWA (`vite-plugin-pwa`, manifest, service worker) — anotado como fuera de alca
 instrucción explícita de la tarea, no del spec. Backend real (FastAPI/Supabase) — la capa
 `AuthProvider`/`lib/` queda preparada para enchufarlo después, pero no se conecta aquí.
 
-## Punto de arranque exacto para F3
+## Punto de arranque exacto para F4
 
-1. `graphify query "ColeccionPage, usePiezas, api/piezas/:id, Chip"` — el endpoint
-   `GET /api/piezas/:id` y `TarjetaColeccion` (enlaza a `/coleccion/:id`) ya existen.
-2. Añadir ruta hija `/coleccion/:id` en `rutas.tsx` (misma sección/roles que Colección) y
-   `src/pages/coleccion/FichaPage.tsx`; hook `usePieza(id)` en `features/fichas/`.
-3. Layout §8: galería izquierda (modal §9, swipe+puntos en móvil) + datos técnicos derecha,
-   nombre en `font-acento italic`; chip de estado; migas §6 (móvil: botón "volver").
-4. Flujo de aprobación HU-05: `PATCH /api/piezas/:id/estado` en MSW (Borrador→En revisión→
-   Aprobada/Rechazada, rechazo con justificación obligatoria), botones deshabilitados por rol
-   (§10: Curador aprueba/rechaza; Catalogador envía a revisión; Consulta solo lee).
-5. Al cerrar: `03-paginas-y-hu.md`, `05-api-mock-msw.md`, `06-estado-fases.md`; rebuild del
-   grafo (`graphify graphify-corpus --update` desde la raíz) + query de verificación.
+1. `graphify query "ColeccionPage, usePiezas, FichaPage, datos.ts, handlers.ts"` — piezas,
+   endpoints y datos mock de F2/F3 ya existen; el Panel principal calcula KPIs sobre
+   `PIEZAS`/`/api/piezas` en vez de un endpoint nuevo salvo que el conteo lo justifique.
+2. `src/pages/panel-principal/PanelPrincipalPage.tsx` reemplaza el `Placeholder` en `rutas.tsx`
+   para `/` (ruta ya existe en `SECCIONES`, todos los roles); tarjetas KPI (total piezas, %
+   catalogación completa = Aprobada/total, piezas sin imagen, piezas con estado de
+   conservación "Requiere restauración") + gráfico simple de distribución por colección (sin
+   librería nueva: barras con `<div>`/SVG básico) + alertas de fichas con datos incompletos.
+3. Al cerrar: `03-paginas-y-hu.md`, `05-api-mock-msw.md` (si se añade endpoint), `06-estado-fases.md`.

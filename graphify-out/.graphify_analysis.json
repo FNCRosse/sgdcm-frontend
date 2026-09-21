@@ -1,169 +1,195 @@
 {
   "communities": {
     "0": [
+      "05_api_mock_msw",
+      "api_piezas",
+      "api_piezas_filtros",
+      "api_piezas_id",
+      "package_json",
+      "public_mockserviceworker",
+      "src_lib_api",
+      "src_main",
+      "src_mocks_browser",
+      "src_mocks_datos",
+      "src_mocks_handlers",
+      "src_types_pieza"
+    ],
+    "1": [
       "04_arquitectura_codigo",
       "oxlintrc",
       "prettierrc",
-      "src_components_boton_tsx",
-      "src_components_campotexto_tsx",
-      "src_main_tsx",
-      "src_pages_login_loginpage_tsx",
-      "src_pages_placeholder_tsx",
-      "src_test_setup_ts",
-      "vite_config_ts"
-    ],
-    "1": [
-      "02_rbac_y_rutas",
-      "src_app_app_tsx",
-      "src_app_requieresesion_tsx",
-      "src_app_rutas_tsx",
-      "src_features_auth_authmock_ts",
-      "src_features_auth_authprovider_tsx",
-      "src_features_auth_sesioncontext_ts",
-      "src_hooks_usesesion_ts",
-      "src_types_sesion_ts"
+      "src_app_requieresesion",
+      "src_app_secciones",
+      "src_components_boton",
+      "src_components_campotexto",
+      "src_components_layout_header",
+      "src_components_layout_layout",
+      "src_components_layout_navenlaces"
     ],
     "2": [
-      "00_prototipo_contexto",
-      "03_paginas_y_hu",
-      "05_api_mock_msw",
-      "06_estado_fases",
-      "docs_historias_usuario",
-      "frontend_design_spec",
-      "plan",
-      "src_app_rutas_test_tsx"
+      "02_rbac_y_rutas",
+      "src_app_app",
+      "src_features_auth_authmock",
+      "src_features_auth_authprovider",
+      "src_features_auth_sesioncontext",
+      "src_hooks_usesesion",
+      "src_types_sesion"
     ],
     "3": [
       "01_design_tokens",
-      "src_app_secciones_ts",
-      "src_components_iconoretablo_tsx",
-      "src_index_css",
-      "src_styles_tokens_css"
+      "public_brand_matp_avatar_rojo",
+      "src_components_iconoretablo",
+      "src_index",
+      "src_styles_tokens",
+      "vite_config"
     ],
     "4": [
-      "src_components_layout_header_tsx",
-      "src_components_layout_layout_tsx",
-      "src_components_layout_navenlaces_tsx"
+      "06_estado_fases",
+      "env_example",
+      "plan",
+      "src_app_rutas_test",
+      "src_features_fichas_usepiezas",
+      "src_pages_coleccion_coleccionpage_test"
+    ],
+    "5": [
+      "03_paginas_y_hu",
+      "src_components_filtropanel",
+      "src_components_paginacion",
+      "src_components_tarjetacoleccion",
+      "src_pages_coleccion_coleccionpage"
+    ],
+    "6": [
+      "00_prototipo_contexto",
+      "docs_historias_usuario",
+      "frontend_design_spec"
+    ],
+    "7": [
+      "src_app_rutas",
+      "src_pages_login_loginpage",
+      "src_pages_placeholder"
     ]
   },
   "cohesion": {
-    "0": 0.2,
-    "1": 0.3611111111111111,
-    "2": 0.39285714285714285,
-    "3": 0.5,
-    "4": 0.6666666666666666
+    "0": 0.3333333333333333,
+    "1": 0.3111111111111111,
+    "2": 0.47619047619047616,
+    "3": 0.3333333333333333,
+    "4": 0.3333333333333333,
+    "5": 0.7,
+    "6": 0.6666666666666666,
+    "7": 0.6666666666666666
   },
   "gods": [
     {
       "id": "04_arquitectura_codigo",
       "label": "Arquitectura de c\u00f3digo",
-      "degree": 28
+      "degree": 35
+    },
+    {
+      "id": "05_api_mock_msw",
+      "label": "API mock con MSW",
+      "degree": 13
     },
     {
       "id": "02_rbac_y_rutas",
       "label": "RBAC y rutas",
-      "degree": 12
+      "degree": 13
     },
     {
       "id": "06_estado_fases",
       "label": "Estado de fases",
-      "degree": 10
+      "degree": 13
+    },
+    {
+      "id": "src_mocks_handlers",
+      "label": "src/mocks/handlers.ts",
+      "degree": 8
     },
     {
       "id": "01_design_tokens",
       "label": "Design tokens e iconograf\u00eda",
-      "degree": 6
+      "degree": 8
     },
     {
-      "id": "00_prototipo_contexto",
-      "label": "Contexto del prototipo",
-      "degree": 5
+      "id": "src_pages_coleccion_coleccionpage",
+      "label": "src/pages/coleccion/ColeccionPage.tsx",
+      "degree": 8
     },
     {
       "id": "03_paginas_y_hu",
       "label": "Las 7 p\u00e1ginas y sus HU",
-      "degree": 5
+      "degree": 8
     },
     {
-      "id": "src_app_secciones_ts",
-      "label": "secciones.ts (SECCIONES)",
-      "degree": 5
+      "id": "src_app_rutas",
+      "label": "src/app/rutas.tsx",
+      "degree": 7
     },
     {
-      "id": "src_features_auth_sesioncontext_ts",
-      "label": "sesionContext.ts",
-      "degree": 5
-    },
-    {
-      "id": "src_features_auth_authmock_ts",
-      "label": "authMock.ts",
-      "degree": 4
-    },
-    {
-      "id": "src_hooks_usesesion_ts",
-      "label": "useSesion.ts",
-      "degree": 4
+      "id": "00_prototipo_contexto",
+      "label": "Contexto del prototipo SGDCM",
+      "degree": 6
     }
   ],
   "surprises": [
     {
-      "source": "Arquitectura de c\u00f3digo",
-      "target": "index.css",
+      "source": "src/features/fichas/usePiezas.ts",
+      "target": "src/lib/api.ts (apiGet, ApiError)",
       "source_files": [
         "04-arquitectura-codigo.md",
-        "01-design-tokens.md"
+        "05-api-mock-msw.md"
       ],
-      "confidence": "EXTRACTED",
-      "relation": "references",
-      "why": "connects across different repos/directories; bridges separate communities; peripheral node `index.css` unexpectedly reaches hub `Arquitectura de c\u00f3digo`"
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; bridges separate communities"
     },
     {
-      "source": "Arquitectura de c\u00f3digo",
-      "target": "tokens.css",
+      "source": "src/pages/coleccion/ColeccionPage.test.tsx",
+      "target": "src/mocks/handlers.ts",
       "source_files": [
-        "04-arquitectura-codigo.md",
-        "01-design-tokens.md"
-      ],
-      "confidence": "EXTRACTED",
-      "relation": "references",
-      "why": "connects across different repos/directories; bridges separate communities; peripheral node `tokens.css` unexpectedly reaches hub `Arquitectura de c\u00f3digo`"
-    },
-    {
-      "source": "Contexto del prototipo",
-      "target": "API mock con MSW",
-      "source_files": [
-        "00-prototipo-contexto.md",
+        "06-estado-fases.md",
         "05-api-mock-msw.md"
       ],
       "confidence": "EXTRACTED",
       "relation": "references",
-      "why": "connects across different repos/directories; peripheral node `API mock con MSW` unexpectedly reaches hub `Contexto del prototipo`"
+      "why": "connects across different repos/directories; bridges separate communities; peripheral node `src/pages/coleccion/ColeccionPage.test.tsx` unexpectedly reaches hub `src/mocks/handlers.ts`"
     },
     {
-      "source": "Design tokens e iconograf\u00eda",
-      "target": "Arquitectura de c\u00f3digo",
+      "source": "Arquitectura de c\u00f3digo",
+      "target": "src/components/IconoRetablo.tsx",
       "source_files": [
-        "01-design-tokens.md",
-        "04-arquitectura-codigo.md"
+        "04-arquitectura-codigo.md",
+        "01-design-tokens.md"
       ],
       "confidence": "EXTRACTED",
       "relation": "references",
-      "why": "connects across different repos/directories; bridges separate communities"
+      "why": "connects across different repos/directories; bridges separate communities; peripheral node `src/components/IconoRetablo.tsx` unexpectedly reaches hub `Arquitectura de c\u00f3digo`"
     },
     {
-      "source": "Design tokens e iconograf\u00eda",
-      "target": "Estado de fases",
+      "source": "Arquitectura de c\u00f3digo",
+      "target": "src/index.css",
       "source_files": [
-        "01-design-tokens.md",
-        "06-estado-fases.md"
+        "04-arquitectura-codigo.md",
+        "01-design-tokens.md"
       ],
       "confidence": "EXTRACTED",
       "relation": "references",
-      "why": "connects across different repos/directories; bridges separate communities"
+      "why": "connects across different repos/directories; bridges separate communities; peripheral node `src/index.css` unexpectedly reaches hub `Arquitectura de c\u00f3digo`"
+    },
+    {
+      "source": "Arquitectura de c\u00f3digo",
+      "target": "src/styles/tokens.css",
+      "source_files": [
+        "04-arquitectura-codigo.md",
+        "01-design-tokens.md"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "connects across different repos/directories; bridges separate communities; peripheral node `src/styles/tokens.css` unexpectedly reaches hub `Arquitectura de c\u00f3digo`"
     }
   ],
   "tokens": {
-    "input": 68990,
-    "output": 17092
+    "input": 68154,
+    "output": 19560
   }
 }
