@@ -1,6 +1,6 @@
 # Arquitectura de código
 
-## Estructura de carpetas (§16) — estado real tras F1
+## Estructura de carpetas (§16) — estado real tras F2
 
 ```
 src/
@@ -14,6 +14,7 @@ src/
     secciones.ts           # SECCIONES (ruta, nombre, ícono, roles) + seccionesPara(rol)
     rutas.test.tsx         # tests F1 (auth mock, guards, nav por rol, login)
   features/auth/           # authMock.ts (intercambiable), sesionContext.ts, AuthProvider.tsx
+  features/fichas/usePiezas.ts  # usePiezas(filtros, pagina) + useOpcionesFiltros (TanStack Query, keepPreviousData); POR_PAGINA=12
   hooks/useSesion.ts
   components/
     Boton.tsx              # variantes primario/secundario/texto (§9), disabled 40%
@@ -23,11 +24,15 @@ src/
     layout/Header.tsx      # escritorio (lockup, nav, buscador, cuenta, salir) y móvil (isotipo, rol, menú a pantalla completa)
     layout/NavEnlaces.tsx  # enlaces filtrados por rol, activo = subrayado rojo
   pages/login/LoginPage.tsx
-  pages/Placeholder.tsx    # título de sección + "en construcción" (F2+ lo reemplaza)
-  types/sesion.ts          # Rol, Usuario
-  lib/, assets/            # vacías (.gitkeep) — cliente API/MSW llega en F2
+  pages/coleccion/ColeccionPage.tsx  # filtros+página en useSearchParams; estados carga/vacío/error; test propio
+  pages/Placeholder.tsx    # título de sección + "en construcción" (queda en 6 rutas)
+  types/sesion.ts, types/pieza.ts
+  lib/api.ts               # apiGet<T> + ApiError (ver 05-api-mock-msw.md)
+  mocks/                   # datos.ts, handlers.ts, browser.ts (MSW)
+  assets/                  # vacía
   test-setup.ts            # jest-dom
 public/brand/              # SVG finales (NUNCA redibujar)
+public/mockServiceWorker.js  # generado por `npx msw init`, no editar
 ```
 
 Alias `@/` → `src/` (tsconfig `paths` + `resolve.alias` en `vite.config.ts`).
@@ -52,5 +57,8 @@ Regla dura: `pages/` importa de `features/`, `components/`, `hooks/` — nunca a
   valores arbitrarios. Única excepción documentada: `style` inline de máscara en `IconoRetablo`.
 - TS `strict`; funcionales + hooks; comentarios solo para el "porqué".
 - Un archivo solo exporta componentes (fast refresh): contexto, hooks y constantes van aparte.
+- Estado de listado (filtros, página) en la URL vía `useSearchParams`, no en `useState`: compartible y con "atrás" gratis.
+- oxlint `jsx-a11y/prefer-tag-over-role`: usar `<output>` en vez de `role="status"`, `sr-only` en vez de `role="img"`+aria-label; no `role="search"` en `<form>`.
+- TS `erasableSyntaxOnly`: sin parameter properties en constructores (ver `ApiError`).
 
 Ver [06-estado-fases.md].

@@ -1,13 +1,13 @@
 # Las 7 páginas y sus HU
 
-**Estado: ninguna construida todavía** (fases F1-F9, ver [06-estado-fases.md] y
+**Estado: Colección (listado) construida en F2; el resto pendiente** (ver [06-estado-fases.md] y
 `PLAN.md` en la raíz). Resumen de estructura y qué HU cubre cada una (spec §8,
 `docs/historias-usuario.md`).
 
 | Página | Estructura prevista | HU | Fase |
 |---|---|---|---|
 | Panel principal | KPIs (total piezas, % catalogación, sin imagen, en restauración) + gráfico distribución por colección + alertas | HU-17, HU-09 | F4 |
-| Colección | Filtros básicos + retícula de tarjetas + paginación; ficha individual: galería + datos técnicos + flujo de aprobación | HU-01 a HU-05 | F2, F3 |
+| Colección | **Listado hecho (F2)**: `pages/coleccion/ColeccionPage.tsx` — filtros básicos (`FiltroPanel`, 7 criterios en el orden §7 + búsqueda por código/nombre) + retícula de `TarjetaColeccion` (1/3/4 columnas) + `Paginacion` (12 por página); filtros y página viven en la URL (`?q=&coleccion=&pagina=`). Estados: carga (retablo gris), vacío (retablo + "Limpiar filtros"), error (`triangle-alert` + Reintentar). Tarjeta enlaza a `/coleccion/:id` (ruta de F3, aún sin página). Ficha individual: F3 | HU-01 a HU-05 | F2 ✅, F3 |
 | Ubicación y movimientos | Jerarquía sede→espacio→mueble→nivel→contenedor + QR + formulario de traslado + historial | HU-07, HU-08 | F6 |
 | Importación | Excel/CSV → mapeo columnas → preview con errores → gestión duplicados → reporte | HU-10 a HU-13 | F7 |
 | Consultas y reportes | Búsqueda multifacética AND/OR + retícula resultados + export PDF/Excel mock | HU-14 a HU-16 | F5 |

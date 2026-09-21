@@ -49,13 +49,18 @@ Leyenda: ⬜ pendiente · 🔄 en curso · ✅ hecha
 
 ---
 
-## F2 — Colección: retícula + filtros + paginación 🔄
+## F2 — Colección: retícula + filtros + paginación ✅
 
 HU-01 a HU-05 (parcial: listado). `src/pages/coleccion/`, `src/features/fichas/`,
 mocks MSW de `/api/piezas` (~50 registros, imágenes placeholder SVG). Actualizar
 `03-paginas-y-hu.md`, `05-api-mock-msw.md`, `06-estado-fases.md`.
 
-## F3 — Ficha individual de pieza ⬜
+- **Cierre (2026-09-20):** MSW activo (`src/mocks/`, 3 endpoints), `lib/api.ts`,
+  `types/pieza.ts`, `usePiezas`, `Chip`/`Paginacion`/`TarjetaColeccion`/`FiltroPanel`,
+  `ColeccionPage` con filtros y página en la URL; 5 tests nuevos (14 en total); desviaciones
+  en `graphify-corpus/06-estado-fases.md`.
+
+## F3 — Ficha individual de pieza 🔄
 
 Galería + datos técnicos + flujo de aprobación (Borrador→En revisión→Aprobada/Rechazada).
 HU-01 a HU-05 (completa). Comparte `features/fichas/` con F2. Actualizar
@@ -115,16 +120,16 @@ PWA (`vite-plugin-pwa`, manifest, service worker) — anotado como fuera de alca
 instrucción explícita de la tarea, no del spec. Backend real (FastAPI/Supabase) — la capa
 `AuthProvider`/`lib/` queda preparada para enchufarlo después, pero no se conecta aquí.
 
-## Punto de arranque exacto para F2
+## Punto de arranque exacto para F3
 
-1. `graphify query "rutas, Layout, Boton, tokens disponibles"` — todo el shell y los tokens ya
-   existen; no recrear nada de `src/app/`, `src/components/` ni `src/styles/`.
-2. Crear `src/mocks/` (MSW: `browser.ts`, `handlers.ts`) y `src/lib/api.ts` (fetch tipado);
-   arrancar el worker en `main.tsx` solo en dev/test. Datos genéricos ("Pieza 001").
-3. `src/types/pieza.ts` desde spec §7; `src/features/fichas/` (hook `usePiezas` con TanStack
-   Query, filtros §6 "Colección"); `src/pages/coleccion/` reemplaza el placeholder en `rutas.tsx`.
-4. Componentes nuevos: `TarjetaColeccion`, `Chip`, `Paginacion`, `FiltroPanel` (bottom sheet
-   en móvil) — solo clases del theme (ver `01-design-tokens.md`).
-5. Al cerrar: actualizar `03-paginas-y-hu.md`, `05-api-mock-msw.md`, `06-estado-fases.md`;
-   rebuild del grafo con `cd graphify-corpus && graphify . --backend claude-cli` y copiar
-   `graphify-out/` a la raíz (`--update` desde la raíz falla por atribución de rutas).
+1. `graphify query "ColeccionPage, usePiezas, api/piezas/:id, Chip"` — el endpoint
+   `GET /api/piezas/:id` y `TarjetaColeccion` (enlaza a `/coleccion/:id`) ya existen.
+2. Añadir ruta hija `/coleccion/:id` en `rutas.tsx` (misma sección/roles que Colección) y
+   `src/pages/coleccion/FichaPage.tsx`; hook `usePieza(id)` en `features/fichas/`.
+3. Layout §8: galería izquierda (modal §9, swipe+puntos en móvil) + datos técnicos derecha,
+   nombre en `font-acento italic`; chip de estado; migas §6 (móvil: botón "volver").
+4. Flujo de aprobación HU-05: `PATCH /api/piezas/:id/estado` en MSW (Borrador→En revisión→
+   Aprobada/Rechazada, rechazo con justificación obligatoria), botones deshabilitados por rol
+   (§10: Curador aprueba/rechaza; Catalogador envía a revisión; Consulta solo lee).
+5. Al cerrar: `03-paginas-y-hu.md`, `05-api-mock-msw.md`, `06-estado-fases.md`; rebuild del
+   grafo (`graphify graphify-corpus --update` desde la raíz) + query de verificación.
