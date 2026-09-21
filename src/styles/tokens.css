@@ -1,0 +1,98 @@
+/* Copia literal de FRONTEND_DESIGN_SPEC.md §3 — no editar valores aquí, editar el spec. */
+:root {
+  /* Color institucional */
+  --azul: #042354; /* PANTONE 281 C — isotipo, títulos, nav, fondos oscuros */
+  --rojo: #eb3156; /* PANTONE 1925 C — color del museo: acentos, acción primaria */
+  --rojo-oscuro: #c3094a; /* PANTONE 1945 C — hover/active del rojo */
+  --gris-1: #bdc3c9; /* PANTONE 429 C — bordes, divisores */
+  --gris-2: #959ea9; /* PANTONE 430 C — texto secundario, etiquetas */
+  --blanco: #ffffff;
+
+  /* Color de apoyo — máx. 1 por pantalla, nunca en el logotipo */
+  --arcilla: #ff6e26; /* PANTONE 1585 C */
+  --paja: #f0ae19; /* PANTONE 7406 C */
+  --verde: #009a73; /* PANTONE 2400 C */
+
+  /* Derivados de interfaz */
+  --texto: #1b2b4b;
+  --fondo-suave: #f3f5f8;
+  --linea: #e3e7ec;
+  --foco: #5366ff; /* PANTONE 660 C — anillo de foco, nunca se quita */
+
+  /* Tipografía */
+  --font-ui: 'Montserrat', system-ui, sans-serif;
+  --font-acento: 'Source Serif 4', Georgia, serif;
+
+  /* Radios (por componente, no uniformes) */
+  --radio-btn: 6px;
+  --radio-card: 8px;
+  --radio-modal: 12px;
+  --radio-pill: 9999px; /* chips */
+
+  /* Única sombra permitida */
+  --sombra: 0 2px 12px rgba(4, 35, 84, 0.08);
+
+  /* Espaciado (múltiplos de 8px, y 4px para interiores pequeños) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 40px;
+}
+
+/* Theme de Tailwind 4 (CSS-first, sustituye a tailwind.config): las paletas por defecto se
+   anulan para que solo existan utilidades derivadas de los tokens de arriba. */
+@theme inline {
+  --color-*: initial;
+  --color-azul: var(--azul);
+  --color-rojo: var(--rojo);
+  --color-rojo-oscuro: var(--rojo-oscuro);
+  --color-gris-1: var(--gris-1);
+  --color-gris-2: var(--gris-2);
+  --color-blanco: var(--blanco);
+  --color-arcilla: var(--arcilla);
+  --color-paja: var(--paja);
+  --color-verde: var(--verde);
+  --color-texto: var(--texto);
+  --color-fondo-suave: var(--fondo-suave);
+  --color-linea: var(--linea);
+  --color-foco: var(--foco);
+
+  --font-*: initial;
+  --font-ui: var(--font-ui);
+  --font-acento: var(--font-acento);
+
+  --radius-*: initial;
+  --radius-btn: var(--radio-btn);
+  --radius-card: var(--radio-card);
+  --radius-modal: var(--radio-modal);
+  --radius-pill: var(--radio-pill);
+
+  --shadow-*: initial;
+  --shadow-sombra: var(--sombra);
+
+  /* Escala tipográfica §3 (escritorio); móvil se ajusta con utilidades responsive */
+  --text-*: initial;
+  --text-h1: 44px;
+  --text-h1--line-height: 1.1;
+  --text-h1-movil: 32px;
+  --text-h1-movil--line-height: 1.1;
+  --text-h2: 32px;
+  --text-h2-movil: 26px;
+  --text-h3: 22px;
+  --text-h3-movil: 20px;
+  --text-cuerpo: 17px;
+  --text-cuerpo--line-height: 1.6;
+  --text-cuerpo-movil: 16px;
+  --text-cuerpo-movil--line-height: 1.6;
+  --text-boton: 15px;
+  --text-miga: 14px;
+  --text-etiqueta: 12px;
+  --text-nav-movil: 24px;
+
+  /* Breakpoints §11: tableta 768, escritorio 1280 */
+  --breakpoint-*: initial;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1280px;
+  --container-contenido: 1200px;
+}

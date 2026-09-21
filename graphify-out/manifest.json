@@ -1,44 +1,44 @@
 {
   "00-prototipo-contexto.md": {
     "mtime": 1789956046.4817438,
-    "seen": 1789957222.727236,
+    "seen": 1789959021.504746,
     "ast_hash": "4687b8c124794991b77ce154349d0444",
     "semantic_hash": "4687b8c124794991b77ce154349d0444"
   },
   "01-design-tokens.md": {
-    "mtime": 1789956058.7482507,
-    "seen": 1789957222.7272513,
-    "ast_hash": "1f50d0612eabacb78696284b2ff53c94",
-    "semantic_hash": "1f50d0612eabacb78696284b2ff53c94"
+    "mtime": 1789958141.3044662,
+    "seen": 1789959021.5047562,
+    "ast_hash": "0342c03a111a89c234d5b94951e68f04",
+    "semantic_hash": "0342c03a111a89c234d5b94951e68f04"
   },
   "02-rbac-y-rutas.md": {
-    "mtime": 1789956068.2102368,
-    "seen": 1789957222.727258,
-    "ast_hash": "1d8cbe5ad4ac136421fe7a4bd1a7320e",
-    "semantic_hash": "1d8cbe5ad4ac136421fe7a4bd1a7320e"
+    "mtime": 1789958163.9443822,
+    "seen": 1789959021.504761,
+    "ast_hash": "3de717269ee3ead8b2666e9b8aeab0c9",
+    "semantic_hash": "3de717269ee3ead8b2666e9b8aeab0c9"
   },
   "03-paginas-y-hu.md": {
     "mtime": 1789956077.2378728,
-    "seen": 1789957222.727262,
+    "seen": 1789959021.5047646,
     "ast_hash": "ae6e78b2673d200d4332afd30e01090a",
     "semantic_hash": "ae6e78b2673d200d4332afd30e01090a"
   },
   "04-arquitectura-codigo.md": {
-    "mtime": 1789956090.090384,
-    "seen": 1789957222.7272666,
-    "ast_hash": "7425427c51d5b0097c68cf52aecd88cf",
-    "semantic_hash": "7425427c51d5b0097c68cf52aecd88cf"
+    "mtime": 1789958191.0512848,
+    "seen": 1789959021.504768,
+    "ast_hash": "eaa6c4e3ae4ac15f0f443d6458f7aeb2",
+    "semantic_hash": "eaa6c4e3ae4ac15f0f443d6458f7aeb2"
   },
   "05-api-mock-msw.md": {
     "mtime": 1789956099.8763647,
-    "seen": 1789957222.7272708,
+    "seen": 1789959021.504771,
     "ast_hash": "21a1232c6f8b51fe57cee0e5e44d56cf",
     "semantic_hash": "21a1232c6f8b51fe57cee0e5e44d56cf"
   },
   "06-estado-fases.md": {
-    "mtime": 1789957106.961931,
-    "seen": 1789957222.7272758,
-    "ast_hash": "4eb936764c23859530c1c9e421a5c79f",
-    "semantic_hash": "4eb936764c23859530c1c9e421a5c79f"
+    "mtime": 1789958221.9215026,
+    "seen": 1789959021.5047743,
+    "ast_hash": "5ccd30966b8b087c54b37ed203c6faf4",
+    "semantic_hash": "5ccd30966b8b087c54b37ed203c6faf4"
   }
 }

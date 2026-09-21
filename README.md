@@ -23,7 +23,21 @@ npm run dev
 
 ## Usuarios de prueba (login mock)
 
-_Se documentan aquí cuando exista el `AuthProvider` mock (fase 1)._
+Contraseña para todos: `museo2026`. Implementación en `src/features/auth/authMock.ts`
+(único archivo a reemplazar para migrar a Supabase Auth).
+
+| Rol | Correo |
+|---|---|
+| Administrador | admin@museo.test |
+| Curador | curador@museo.test |
+| Catalogador | catalogador@museo.test |
+| Conservador | conservador@museo.test |
+| Consulta | consulta@museo.test |
+
+## Scripts
+
+`npm run dev` · `npm test` (Vitest + RTL) · `npm run lint` (oxlint: react, react-hooks, jsx-a11y)
+· `npm run format` (Prettier) · `npm run build`.
 
 ## Grafo del prototipo
 

@@ -1,32 +1,42 @@
 # Design tokens (§3) e iconografía (§4)
 
-**Estado: pendiente de fase 1.** Los tokens viven hoy solo en
-`FRONTEND_DESIGN_SPEC.md` §3 — todavía no hay `tailwind.config` ni `src/styles/tokens.css`
-en este repo. Esta cápsula documenta el mapeo previsto para cuando F1 lo construya.
+**Estado: hecho en F1.** Tokens en `src/styles/tokens.css`; `src/index.css` importa Tailwind y
+los tokens y fija la base (body, foco global, h1-h3).
 
-## Tokens (a copiar tal cual desde el spec §3)
+## Dónde viven
 
-Color: `--azul #042354`, `--rojo #EB3156`, `--rojo-oscuro #C3094A`, `--gris-1 #BDC3C9`,
-`--gris-2 #959EA9`, `--blanco`, apoyo `--arcilla`/`--paja`/`--verde` (máx. 1 por pantalla),
-derivados `--texto`/`--fondo-suave`/`--linea`/`--foco #5366FF`.
+- `src/styles/tokens.css`: bloque `:root` **copiado literal** del spec §3 (`--azul`, `--rojo`,
+  `--rojo-oscuro`, `--gris-1/2`, `--blanco`, apoyo `--arcilla/--paja/--verde`, derivados
+  `--texto/--fondo-suave/--linea/--foco`, `--font-ui/--font-acento`, `--radio-*`, `--sombra`,
+  `--space-1..5`).
+- Debajo, un bloque `@theme inline` de **Tailwind 4 (CSS-first)**: no existe `tailwind.config`
+  (desviación documentada respecto al texto del spec §15, mismo resultado). Las paletas por
+  defecto de Tailwind se anulan (`--color-*: initial`, `--font-*`, `--radius-*`, `--shadow-*`,
+  `--text-*`, `--breakpoint-*`) para que solo existan utilidades derivadas de los tokens.
+- Integración: plugin `@tailwindcss/vite` en `vite.config.ts` (sin PostCSS).
 
-Tipografía: `--font-ui` Montserrat, `--font-acento` Source Serif 4 (Google Fonts, ver spec).
+## Utilidades disponibles (únicas permitidas)
 
-Radios: `--radio-btn 6px`, `--radio-card 8px`, `--radio-modal 12px`, `--radio-pill 9999px`.
-Sombra única: `--sombra`. Espaciado: `--space-1..5` (4/8/16/24/40px).
+- Color: `bg-/text-/border-` + `azul | rojo | rojo-oscuro | gris-1 | gris-2 | blanco | arcilla |
+  paja | verde | texto | fondo-suave | linea | foco`.
+- Fuente: `font-ui`, `font-acento`. Radio: `rounded-btn | card | modal | pill`. Sombra: `shadow-sombra`.
+- Tamaños de texto (escala §3): `text-h1 | h1-movil | h2 | h2-movil | h3 | h3-movil | cuerpo |
+  cuerpo-movil | boton (15) | miga (14) | etiqueta (12) | nav-movil (24)`.
+- Breakpoints §11: `md:` = 768px (tableta), `lg:` = 1280px (escritorio). `max-w-contenido` = 1200px.
+- Espaciado: se mantiene la escala por defecto de Tailwind (base 4px): `1/2/4/6/10` ≙
+  `--space-1..5` (4/8/16/24/40px). Sin valores arbitrarios (`p-[13px]`).
 
-## Plan de implementación (F1)
+## Base global (`src/index.css`)
 
-- `src/styles/tokens.css`: copia literal del bloque `:root` del spec §3.
-- `tailwind.config`: `theme.extend` leyendo esas custom properties (`bg-azul`, `text-rojo`,
-  `p-space-3`, `rounded-btn`...). Prohibido cualquier color/espaciado/radio suelto
-  (`bg-[#042354]`) fuera de este theme — regla dura de §17/§18.
+`body`: `bg-blanco font-ui text-texto`, 16px móvil / 17px escritorio, interlineado 1.6.
+`:focus-visible`: anillo 3px `--foco`, offset 2px — regla única, nunca se sobreescribe.
+Fuentes Google (Montserrat 400/600/800, Source Serif 4 italic) enlazadas en `index.html`.
 
 ## Iconografía (§4)
 
-Lucide (`lucide-react`) monolínea 24px `stroke: currentColor`, más un ícono propio
-(`icon_retablo_24.svg`, ya copiado a `public/brand/`) para la sección Colección. Mapa
-completo uso→ícono en spec §4 (dashboard, colección, ubicación, importación, consultas,
-IA, administración, categorías de pieza). Nunca diseñar íconos nuevos.
+`lucide-react` (`size` 20 nav escritorio / 24 acciones / 32 menú móvil, `aria-hidden`).
+Mapa de sección→ícono en `src/app/secciones.ts`. Ícono propio `icon_retablo_24.svg` se
+renderiza con `src/components/IconoRetablo.tsx` (máscara CSS + `bg-current` → hereda
+`currentColor` sin tocar el SVG). Favicon: `public/brand/matp_avatar_rojo.svg`.
 
-Ver [00-prototipo-contexto.md] y [06-estado-fases.md].
+Ver [04-arquitectura-codigo.md] y [06-estado-fases.md].

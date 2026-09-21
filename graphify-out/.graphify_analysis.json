@@ -1,36 +1,78 @@
 {
   "communities": {
     "0": [
-      "00_prototipo_contexto",
-      "01_design_tokens",
-      "05_api_mock_msw",
-      "design_tokens_concept",
-      "msw_mock_api"
+      "04_arquitectura_codigo",
+      "oxlintrc",
+      "prettierrc",
+      "src_components_boton_tsx",
+      "src_components_campotexto_tsx",
+      "src_main_tsx",
+      "src_pages_login_loginpage_tsx",
+      "src_pages_placeholder_tsx",
+      "src_test_setup_ts",
+      "vite_config_ts"
     ],
     "1": [
-      "04_arquitectura_codigo",
-      "06_estado_fases",
-      "estructura_carpetas",
-      "graphify_graph",
-      "lint_deviation"
+      "02_rbac_y_rutas",
+      "src_app_app_tsx",
+      "src_app_requieresesion_tsx",
+      "src_app_rutas_tsx",
+      "src_features_auth_authmock_ts",
+      "src_features_auth_authprovider_tsx",
+      "src_features_auth_sesioncontext_ts",
+      "src_hooks_usesesion_ts",
+      "src_types_sesion_ts"
     ],
     "2": [
-      "02_rbac_y_rutas",
+      "00_prototipo_contexto",
       "03_paginas_y_hu",
-      "authprovider",
-      "rbac_roles"
+      "05_api_mock_msw",
+      "06_estado_fases",
+      "docs_historias_usuario",
+      "frontend_design_spec",
+      "plan",
+      "src_app_rutas_test_tsx"
+    ],
+    "3": [
+      "01_design_tokens",
+      "src_app_secciones_ts",
+      "src_components_iconoretablo_tsx",
+      "src_index_css",
+      "src_styles_tokens_css"
+    ],
+    "4": [
+      "src_components_layout_header_tsx",
+      "src_components_layout_layout_tsx",
+      "src_components_layout_navenlaces_tsx"
     ]
   },
   "cohesion": {
-    "0": 0.4,
-    "1": 0.5,
-    "2": 0.8333333333333334
+    "0": 0.2,
+    "1": 0.3611111111111111,
+    "2": 0.39285714285714285,
+    "3": 0.5,
+    "4": 0.6666666666666666
   },
   "gods": [
     {
+      "id": "04_arquitectura_codigo",
+      "label": "Arquitectura de c\u00f3digo",
+      "degree": 28
+    },
+    {
+      "id": "02_rbac_y_rutas",
+      "label": "RBAC y rutas",
+      "degree": 12
+    },
+    {
       "id": "06_estado_fases",
       "label": "Estado de fases",
-      "degree": 8
+      "degree": 10
+    },
+    {
+      "id": "01_design_tokens",
+      "label": "Design tokens e iconograf\u00eda",
+      "degree": 6
     },
     {
       "id": "00_prototipo_contexto",
@@ -38,75 +80,71 @@
       "degree": 5
     },
     {
-      "id": "02_rbac_y_rutas",
-      "label": "RBAC y rutas",
-      "degree": 4
-    },
-    {
       "id": "03_paginas_y_hu",
       "label": "Las 7 p\u00e1ginas y sus HU",
+      "degree": 5
+    },
+    {
+      "id": "src_app_secciones_ts",
+      "label": "secciones.ts (SECCIONES)",
+      "degree": 5
+    },
+    {
+      "id": "src_features_auth_sesioncontext_ts",
+      "label": "sesionContext.ts",
+      "degree": 5
+    },
+    {
+      "id": "src_features_auth_authmock_ts",
+      "label": "authMock.ts",
       "degree": 4
     },
     {
-      "id": "01_design_tokens",
-      "label": "Design tokens e iconograf\u00eda",
-      "degree": 3
-    },
-    {
-      "id": "04_arquitectura_codigo",
-      "label": "Arquitectura de c\u00f3digo",
-      "degree": 3
-    },
-    {
-      "id": "05_api_mock_msw",
-      "label": "API mock con MSW",
-      "degree": 3
-    },
-    {
-      "id": "authprovider",
-      "label": "AuthProvider (contrato mock)",
-      "degree": 3
-    },
-    {
-      "id": "rbac_roles",
-      "label": "RBAC \u2014 5 roles",
-      "degree": 3
-    },
-    {
-      "id": "lint_deviation",
-      "label": "Desviaci\u00f3n de lint: oxlint vs ESLint",
-      "degree": 2
+      "id": "src_hooks_usesesion_ts",
+      "label": "useSesion.ts",
+      "degree": 4
     }
   ],
   "surprises": [
     {
-      "source": "Contexto del prototipo",
-      "target": "Las 7 p\u00e1ginas y sus HU",
+      "source": "Arquitectura de c\u00f3digo",
+      "target": "index.css",
       "source_files": [
-        "00-prototipo-contexto.md",
-        "03-paginas-y-hu.md"
+        "04-arquitectura-codigo.md",
+        "01-design-tokens.md"
       ],
       "confidence": "EXTRACTED",
       "relation": "references",
-      "why": "connects across different repos/directories; bridges separate communities"
+      "why": "connects across different repos/directories; bridges separate communities; peripheral node `index.css` unexpectedly reaches hub `Arquitectura de c\u00f3digo`"
     },
     {
-      "source": "Contexto del prototipo",
-      "target": "Estado de fases",
+      "source": "Arquitectura de c\u00f3digo",
+      "target": "tokens.css",
       "source_files": [
-        "00-prototipo-contexto.md",
-        "06-estado-fases.md"
+        "04-arquitectura-codigo.md",
+        "01-design-tokens.md"
       ],
       "confidence": "EXTRACTED",
       "relation": "references",
-      "why": "connects across different repos/directories; bridges separate communities"
+      "why": "connects across different repos/directories; bridges separate communities; peripheral node `tokens.css` unexpectedly reaches hub `Arquitectura de c\u00f3digo`"
     },
     {
       "source": "Contexto del prototipo",
-      "target": "AuthProvider (contrato mock)",
+      "target": "API mock con MSW",
       "source_files": [
         "00-prototipo-contexto.md",
-        "02-rbac-y-rutas.md"
+        "05-api-mock-msw.md"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "connects across different repos/directories; peripheral node `API mock con MSW` unexpectedly reaches hub `Contexto del prototipo`"
+    },
+    {
+      "source": "Design tokens e iconograf\u00eda",
+      "target": "Arquitectura de c\u00f3digo",
+      "source_files": [
+        "01-design-tokens.md",
+        "04-arquitectura-codigo.md"
       ],
       "confidence": "EXTRACTED",
       "relation": "references",
@@ -122,21 +160,10 @@
       "confidence": "EXTRACTED",
       "relation": "references",
       "why": "connects across different repos/directories; bridges separate communities"
-    },
-    {
-      "source": "RBAC y rutas",
-      "target": "Estado de fases",
-      "source_files": [
-        "02-rbac-y-rutas.md",
-        "06-estado-fases.md"
-      ],
-      "confidence": "EXTRACTED",
-      "relation": "references",
-      "why": "connects across different repos/directories; bridges separate communities"
     }
   ],
   "tokens": {
-    "input": 66562,
-    "output": 12014
+    "input": 68990,
+    "output": 17092
   }
 }

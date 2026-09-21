@@ -25,7 +25,7 @@ Leyenda: ⬜ pendiente · 🔄 en curso · ✅ hecha
 
 ---
 
-## F1 — Sistema de diseño, layout/shell, router, AuthProvider, login, guards ⬜
+## F1 — Sistema de diseño, layout/shell, router, AuthProvider, login, guards ✅
 
 - **Objetivo:** tokens de §3 en `tailwind.config`, shell de navegación (header/footer/menú
   móvil) de §6, rutas protegidas por rol, login mock funcional.
@@ -42,10 +42,14 @@ Leyenda: ⬜ pendiente · 🔄 en curso · ✅ hecha
   no se renderizan; ningún color/radio/espaciado fuera del theme; responsive 320-1280px.
 - **Qué NO hacer:** construir las 7 páginas de contenido (solo el shell + placeholder por
   ruta); conectar Supabase real.
+- **Cierre (2026-09-20):** tokens en `src/styles/tokens.css` con `@theme` de Tailwind 4
+  (sin `tailwind.config`); lint = oxlint (react/react-hooks/jsx-a11y), ESLint desinstalado;
+  9 tests en `src/app/rutas.test.tsx`; desviaciones listadas en
+  `graphify-corpus/06-estado-fases.md`. Grafo rebuild: 35 nodos.
 
 ---
 
-## F2 — Colección: retícula + filtros + paginación ⬜
+## F2 — Colección: retícula + filtros + paginación 🔄
 
 HU-01 a HU-05 (parcial: listado). `src/pages/coleccion/`, `src/features/fichas/`,
 mocks MSW de `/api/piezas` (~50 registros, imágenes placeholder SVG). Actualizar
@@ -111,11 +115,16 @@ PWA (`vite-plugin-pwa`, manifest, service worker) — anotado como fuera de alca
 instrucción explícita de la tarea, no del spec. Backend real (FastAPI/Supabase) — la capa
 `AuthProvider`/`lib/` queda preparada para enchufarlo después, pero no se conecta aquí.
 
-## Punto de arranque exacto para F1
+## Punto de arranque exacto para F2
 
-1. Leer `graphify-corpus/01-design-tokens.md` y `02-rbac-y-rutas.md` (grafo o archivo
-   directo mientras el grafo esté bloqueado).
-2. Copiar el bloque `:root` de `FRONTEND_DESIGN_SPEC.md` §3 a `src/styles/tokens.css`.
-3. Extender `tailwind.config` desde esas custom properties.
-4. Decidir y resolver la deuda de lint (oxlint vs. ESLint) antes de escribir componentes.
-5. Construir `AuthProvider` mock + guards + shell de navegación + página de login.
+1. `graphify query "rutas, Layout, Boton, tokens disponibles"` — todo el shell y los tokens ya
+   existen; no recrear nada de `src/app/`, `src/components/` ni `src/styles/`.
+2. Crear `src/mocks/` (MSW: `browser.ts`, `handlers.ts`) y `src/lib/api.ts` (fetch tipado);
+   arrancar el worker en `main.tsx` solo en dev/test. Datos genéricos ("Pieza 001").
+3. `src/types/pieza.ts` desde spec §7; `src/features/fichas/` (hook `usePiezas` con TanStack
+   Query, filtros §6 "Colección"); `src/pages/coleccion/` reemplaza el placeholder en `rutas.tsx`.
+4. Componentes nuevos: `TarjetaColeccion`, `Chip`, `Paginacion`, `FiltroPanel` (bottom sheet
+   en móvil) — solo clases del theme (ver `01-design-tokens.md`).
+5. Al cerrar: actualizar `03-paginas-y-hu.md`, `05-api-mock-msw.md`, `06-estado-fases.md`;
+   rebuild del grafo con `cd graphify-corpus && graphify . --backend claude-cli` y copiar
+   `graphify-out/` a la raíz (`--update` desde la raíz falla por atribución de rutas).
