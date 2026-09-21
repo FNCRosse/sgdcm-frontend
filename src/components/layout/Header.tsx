@@ -17,17 +17,17 @@ export function Header({ usuario }: { usuario: Usuario }) {
 
   return (
     <header className="sticky top-0 z-10 border-b border-linea bg-blanco">
-      <div className="mx-auto flex max-w-contenido items-center justify-between gap-6 px-4 py-2 md:px-8 lg:px-10">
+      <div className="mx-auto flex max-w-contenido items-center gap-4 px-4 py-2 md:px-8 lg:px-10">
         {/* Escritorio (§6): lockup positivo → nav → buscador → cuenta */}
         <img
           src="/brand/matp_lockup_positivo.svg"
           alt="Museo de Artes y Tradiciones Populares Luis Repetto Málaga"
-          className="hidden h-14 md:block"
+          className="hidden h-14 shrink-0 md:block"
         />
-        <nav aria-label="Principal" className="hidden md:block">
+        <nav aria-label="Principal" className="hidden min-w-0 flex-1 md:block">
           <NavEnlaces rol={usuario.rol} variante="escritorio" />
         </nav>
-        <div className="hidden items-center gap-4 md:flex">
+        <div className="hidden shrink-0 items-center gap-3 md:flex">
           <button
             type="button"
             aria-label="Buscar en todo el sistema"

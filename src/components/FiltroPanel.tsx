@@ -1,4 +1,4 @@
-import { SlidersHorizontal, X } from 'lucide-react'
+import { ChevronDown, SlidersHorizontal, X } from 'lucide-react'
 import { useId, useState } from 'react'
 import type { FiltrosPieza, OpcionesFiltros } from '@/types/pieza'
 import { Boton } from './Boton'
@@ -24,13 +24,16 @@ const campo =
   'min-h-12 rounded-btn border border-gris-1 bg-blanco px-3 text-cuerpo-movil focus:border-azul md:min-h-10'
 
 /**
- * Filtros básicos de Colección (§6). Escritorio: fila siempre visible.
- * Móvil (§9/§11): botón "Filtrar" → bottom sheet.
+ * Filtros básicos de Colección (§6). Escritorio: fila siempre visible, solo "Código o
+ * nombre" abierto de entrada; el resto se revela con "Mostrar más filtros" (animado).
+ * Móvil (§9/§11): botón "Filtrar" → bottom sheet, con el mismo desplegable adentro.
  */
 // ponytail: el bottom sheet no atrapa el foco (misma deuda que el menú móvil); revisar en F10.
 export function FiltroPanel({ filtros, opciones, onCambio }: Props) {
   const [abierto, setAbierto] = useState(false)
+  const [masFiltros, setMasFiltros] = useState(false)
   const id = useId()
+  const extraId = `${id}-extra`
   const activos = Object.values(filtros).filter(Boolean).length
   const set = (clave: keyof FiltrosPieza, valor: string) =>
     onCambio({ ...filtros, [clave]: valor || undefined })
@@ -86,32 +89,56 @@ export function FiltroPanel({ filtros, opciones, onCambio }: Props) {
           />
         </label>
 
-        {CAMPOS.map(({ clave, etiqueta }) => (
-          <label key={clave} className="flex flex-col gap-1">
-            <span className="text-miga font-semibold">{etiqueta}</span>
-            <select
-              value={filtros[clave] ?? ''}
-              onChange={(e) => set(clave, e.target.value)}
-              className={campo}
-            >
-              <option value="">Todas</option>
-              {opciones?.[clave].map((o) => (
-                <option key={o} value={o}>
-                  {o}
-                </option>
-              ))}
-            </select>
-          </label>
-        ))}
+        <button
+          type="button"
+          aria-expanded={masFiltros}
+          aria-controls={extraId}
+          onClick={() => setMasFiltros((v) => !v)}
+          className="flex items-center gap-1 text-miga font-semibold text-azul hover:underline md:col-span-4"
+        >
+          <ChevronDown
+            size={16}
+            aria-hidden
+            className={`transition-transform duration-200 ${masFiltros ? 'rotate-180' : ''}`}
+          />
+          {masFiltros ? 'Ocultar filtros' : 'Mostrar más filtros'}
+          {activos ? ` (${activos})` : ''}
+        </button>
 
-        <div className="flex flex-col gap-2 md:col-span-4 md:flex-row md:justify-end">
-          <Boton type="button" variante="texto" disabled={!activos} onClick={() => onCambio({})}>
-            Limpiar filtros
-          </Boton>
-          <Boton type="button" onClick={() => setAbierto(false)} className="md:hidden">
-            Ver resultados
-          </Boton>
+        <div
+          id={extraId}
+          className={`overflow-hidden transition-all duration-300 ease-in-out md:col-span-4 ${masFiltros ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'}`}
+        >
+          <div className="grid gap-4 pt-3 md:grid-cols-4">
+            {CAMPOS.map(({ clave, etiqueta }) => (
+              <label key={clave} className="flex flex-col gap-1">
+                <span className="text-miga font-semibold">{etiqueta}</span>
+                <select
+                  value={filtros[clave] ?? ''}
+                  onChange={(e) => set(clave, e.target.value)}
+                  className={campo}
+                >
+                  <option value="">Todas</option>
+                  {opciones?.[clave].map((o) => (
+                    <option key={o} value={o}>
+                      {o}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            ))}
+          </div>
+
+          <div className="mt-4 flex flex-col gap-2 md:flex-row md:justify-end">
+            <Boton type="button" variante="texto" disabled={!activos} onClick={() => onCambio({})}>
+              Limpiar filtros
+            </Boton>
+          </div>
         </div>
+
+        <Boton type="button" onClick={() => setAbierto(false)} className="md:hidden">
+          Ver resultados
+        </Boton>
       </form>
     </>
   )

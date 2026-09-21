@@ -12,7 +12,7 @@ export function TarjetaColeccion({ pieza }: { pieza: Pieza }) {
   return (
     <Link
       to={`/coleccion/${pieza.id}`}
-      className="flex overflow-hidden rounded-card bg-blanco shadow-sombra transition-colors hover:bg-fondo-suave md:flex-col"
+      className="relative flex overflow-hidden rounded-card bg-blanco shadow-sombra transition-all duration-200 hover:z-10 hover:scale-105 hover:bg-fondo-suave md:flex-col"
     >
       {pieza.imagen ? (
         <img
